@@ -16068,6 +16068,8 @@ print_mips_ases (FILE *file, unsigned int mask)
     fputs ("\n\tLoongson EXT ASE", file);
   if (mask & AFL_ASE_LOONGSON_EXT2)
     fputs ("\n\tLoongson EXT2 ASE", file);
+  if (mask & AFL_ASE_LOONGSON_BT)
+    fputs ("\n\tLoongson BT ASE", file);
   if (mask == 0)
     fprintf (file, "\n\t%s", _("None"));
   else if ((mask & ~AFL_ASE_MASK) != 0)

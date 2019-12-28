@@ -1573,6 +1573,8 @@ enum options
     OPTION_NO_LOONGSON_EXT,
     OPTION_LOONGSON_EXT2,
     OPTION_NO_LOONGSON_EXT2,
+    OPTION_LOONGSON_BT,
+    OPTION_NO_LOONGSON_BT,
     OPTION_END_OF_ENUM
   };
 
@@ -1641,6 +1643,8 @@ struct option md_longopts[] =
   {"mno-loongson-ext", no_argument, NULL, OPTION_NO_LOONGSON_EXT},
   {"mloongson-ext2", no_argument, NULL, OPTION_LOONGSON_EXT2},
   {"mno-loongson-ext2", no_argument, NULL, OPTION_NO_LOONGSON_EXT2},
+  {"mloongson-bt", no_argument, NULL, OPTION_LOONGSON_BT},
+  {"mno-loongson-bt", no_argument, NULL, OPTION_NO_LOONGSON_BT},
 
   /* Old-style architecture options.  Don't add more of these.  */
   {"m4650", no_argument, NULL, OPTION_M4650},
@@ -1860,6 +1864,11 @@ static const struct mips_ase mips_ases[] = {
 
   { "loongson-ext2", ASE_LOONGSON_EXT | ASE_LOONGSON_EXT2, 0,
     OPTION_LOONGSON_EXT2, OPTION_NO_LOONGSON_EXT2,
+    0, 0, -1, -1,
+    -1 },
+
+  { "loongson-bt", ASE_LOONGSON_BT, 0,
+    OPTION_LOONGSON_BT, OPTION_NO_LOONGSON_BT,
     0, 0, -1, -1,
     -1 },
 };
@@ -19366,6 +19375,8 @@ mips_convert_ase_flags (int ase)
     ext_ases |= AFL_ASE_LOONGSON_EXT;
   if (ase & ASE_LOONGSON_EXT2)
     ext_ases |= AFL_ASE_LOONGSON_EXT2;
+  if (ase & ASE_LOONGSON_BT)
+    ext_ases |= AFL_ASE_LOONGSON_BT;
 
   return ext_ases;
 }
@@ -20114,14 +20125,18 @@ static const struct mips_cpu_info mips_cpu_info_table[] =
   /* MIPS 64 Release 2.  */
   /* Loongson CPU core.  */
   /* -march=loongson3a is an alias of -march=gs464 for compatibility.  */
-  { "loongson3a",     0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT,
-     ISA_MIPS64R2,	CPU_GS464 },
-  { "gs464",          0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT,
-     ISA_MIPS64R2,	CPU_GS464 },
+  { "loongson3a",     0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
+     | ASE_LOONGSON_BT,
+     ISA_MIPS64R2, CPU_GS464 },
+  { "gs464",          0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
+     | ASE_LOONGSON_BT,
+     ISA_MIPS64R2, CPU_GS464 },
   { "gs464e",         0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
-     | ASE_LOONGSON_EXT2,	ISA_MIPS64R2,	CPU_GS464E },
+     | ASE_LOONGSON_EXT2 | ASE_LOONGSON_BT,
+     ISA_MIPS64R2, CPU_GS464E },
   { "gs264e",         0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
-     | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64,	ISA_MIPS64R2,	CPU_GS264E },
+     | ASE_LOONGSON_EXT2 | ASE_LOONGSON_BT | ASE_MSA | ASE_MSA64,
+     ISA_MIPS64R2, CPU_GS264E },
 
   /* Cavium Networks Octeon CPU core.  */
   { "octeon",	      0, 0,			ISA_MIPS64R2, CPU_OCTEON },

@@ -424,6 +424,9 @@ decode_mips_operand (const char *p)
 /* Loongson EXTensions R2 (EXT2) instructions support.  */
 #define LEXT2	ASE_LOONGSON_EXT2
 
+/* Loongson Binary Translation (BT) support.   */
+#define LBT	ASE_LOONGSON_BT
+
 /* The order of overloaded instructions matters.  Label arguments and
    register arguments look the same. Instructions that can have either
    for arguments must apear in the correct order in this table for the

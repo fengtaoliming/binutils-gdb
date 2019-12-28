@@ -632,24 +632,28 @@ const struct mips_arch_choice mips_arch_choices[] =
 
   /* The loongson3a is an alias of gs464 for compatibility */
   { "loongson3a",   1, bfd_mach_mips_gs464, CPU_GS464,
-    ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT,
+    ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
+    | ASE_LOONGSON_BT,
     mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
     mips_hwr_names_numeric },
 
   { "gs464",   1, bfd_mach_mips_gs464, CPU_GS464,
-    ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT,
+    ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
+    | ASE_LOONGSON_BT,
     mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
     mips_hwr_names_numeric },
 
   { "gs464e",   1, bfd_mach_mips_gs464e, CPU_GS464E,
     ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
-    | ASE_LOONGSON_EXT2, mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
+    | ASE_LOONGSON_EXT2 | ASE_LOONGSON_BT,
+    mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
     mips_hwr_names_numeric },
 
   { "gs264e",   1, bfd_mach_mips_gs464e, CPU_GS264E,
     ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
-    | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64, mips_cp0_names_numeric, NULL,
-    0, mips_cp1_names_mips3264, mips_hwr_names_numeric },
+    | ASE_LOONGSON_EXT2 | ASE_LOONGSON_BT | ASE_MSA | ASE_MSA64,
+    mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
+    mips_hwr_names_numeric },
 
   { "octeon",   1, bfd_mach_mips_octeon, CPU_OCTEON,
     ISA_MIPS64R2 | INSN_OCTEON, 0, mips_cp0_names_numeric, NULL, 0,
@@ -979,6 +983,12 @@ parse_mips_ase_option (const char *option)
   if (CONST_STRNEQ (option, "loongson-ext"))
     {
       mips_ase |= ASE_LOONGSON_EXT;
+      return TRUE;
+    }
+
+  if (CONST_STRNEQ (option, "loongson-bt"))
+    {
+      mips_ase |= ASE_LOONGSON_BT;
       return TRUE;
     }
 

@@ -1311,6 +1311,8 @@ static const unsigned int mips_isa_table[] = {
 /* The Enhanced VA Scheme (EVA) extension has instructions which are
    only valid for the R6 ISA.  */
 #define ASE_EVA_R6		0x02000000
+/* Loongson Binary Translation (BT) Extension.  */
+#define ASE_LOONGSON_BT		0x04000000
 
 /* MIPS ISA defines, use instead of hardcoding ISA level.  */
 
