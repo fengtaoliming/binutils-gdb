@@ -29,4 +29,7 @@ Disassembly of section .text:
 0+0014:	70000071 	clrtm
 0+0018:	70000036 	inctop
 0+001c:	70000076 	dectop
+0+0020:	702320b2 	cvt\.d\.ld	\$f2,\$f4,\$f3
+0+0024:	72201132 	cvt\.ld\.d	\$f4,\$f2
+0+0028:	722010f3 	cvt\.ud\.d	\$f3,\$f2
 	\.\.\.

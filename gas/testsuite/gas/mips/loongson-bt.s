@@ -13,9 +13,12 @@
 	inctop
 	dectop
 
-#	cvt.d.ld	$f2, $f3, $f4
-#	cvt.ld.d	$f4, $f2
-#	cvt.ud.d	$f3, $f2
+	# $f2: 64-bit double
+	# $f3: 80-bit double, bits 79 - 64
+	# $f4: 80-bit double, bits 63 - 0
+	cvt.d.ld	$f2, $f4, $f3
+	cvt.ld.d	$f4, $f2
+	cvt.ud.d	$f3, $f2
 
 #	mfeflag		$2, 0x123
 #	dctz	$2,$4
