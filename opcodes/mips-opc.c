@@ -3401,6 +3401,16 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"ginvi",		"s",		0x7c00003d, 0xfc1fffff, RD_1,			0,		0,		GINV,	0 },
 {"ginvt",		"s,+\\",	0x7c0000bd, 0xfc1ffcff, RD_1,			0,		0,		GINV,	0 },
 
+/* Loongson Binary Translation (BT) ASE.  */
+{"x86setflag.d",	"",		0x70000030, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"x86setflag.w",	"",		0x70000070, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"x86setflag.h",	"",		0x700000b0, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"x86setflag.b",	"",		0x700000f0, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"settm",		"",		0x70000031, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"clrtm",		"",		0x70000071, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"inctop",		"",		0x70000036, 0xffffffff, 0,			0,		0,		LBT,	0 },
+{"dectop",		"",		0x70000076, 0xffffffff, 0,			0,		0,		LBT,	0 },
+
 /* No hazard protection on coprocessor instructions--they shouldn't
    change the state of the processor and if they do it's up to the
    user to put in nops as necessary.  These are at the end so that the
