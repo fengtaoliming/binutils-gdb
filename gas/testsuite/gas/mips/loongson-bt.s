@@ -2,10 +2,10 @@
 	.set noreorder
 
 	# EFLAGS maintenance insn prefix
-	x86setflag.b
-	x86setflag.h
-	x86setflag.w
-	x86setflag.d
+	setx86flag.b
+	setx86flag.h
+	setx86flag.w
+	setx86flag.d
 
 	# x87 emulation helper insns
 	settm
