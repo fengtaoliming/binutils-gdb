@@ -3410,9 +3410,9 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"clrtm",		"",		0x70000071, 0xffffffff, 0,			0,		0,		LBT,	0 },
 {"inctop",		"",		0x70000036, 0xffffffff, 0,			0,		0,		LBT,	0 },
 {"dectop",		"",		0x70000076, 0xffffffff, 0,			0,		0,		LBT,	0 },
-{"cvt.d.ld",		"D,S,T",	0x70200032, 0xffe0003f, WR_1|RD_2|RD_3,		0,		0,		LBT,	0 },
-{"cvt.ld.d",		"D,S",		0x72200032, 0xffff003f, WR_1|RD_2,		0,		0,		LBT,	0 },
-{"cvt.ud.d",		"D,S",		0x72200033, 0xffff003f, WR_1|RD_2,		0,		0,		LBT,	0 },
+{"cvt.d.ld",		"D,S,T",	0x70200032, 0xffe0003f, WR_1|RD_2|RD_3|FP_D,	0,		0,		LBT,	0 },
+{"cvt.ld.d",		"D,S",		0x72200032, 0xffff003f, WR_1|RD_2|FP_D,		0,		0,		LBT,	0 },
+{"cvt.ud.d",		"D,S",		0x72200033, 0xffff003f, WR_1|RD_2|FP_D,		0,		0,		LBT,	0 },
 
 /* No hazard protection on coprocessor instructions--they shouldn't
    change the state of the processor and if they do it's up to the
