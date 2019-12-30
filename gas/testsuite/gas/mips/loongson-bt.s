@@ -20,7 +20,12 @@
 	cvt.ld.d	$f4, $f2
 	cvt.ud.d	$f3, $f2
 
-#	mfeflag		$2, 0x123
+	mftop	$2
+	mttop	6
+
+	x86mfflag	$2, 0xff
+	x86mtflag	$2, 0xff
+
 #	dctz	$2,$4
 
 # Force at least 8 (non-delay-slot) zero bytes, to make 'objdump' print ...

@@ -140,6 +140,8 @@ decode_mips_operand (const char *p)
 	case '"': BRANCH (21, 0, 2);
 	case ';': SPECIAL (10, 16, SAME_RS_RT);
 	case '\\': BIT (2, 8, 0);		/* (0 .. 3) */
+	case '[': BIT (8, 6, 0);		/* (0 .. 255) */
+	case ']': UINT (3, 8);			/* (0 .. 7) */
 	}
       break;
 
@@ -3413,9 +3415,9 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"cvt.d.ld",		"D,S,T",	0x70200032, 0xffe0003f, WR_1|RD_2|RD_3|FP_D,	0,		0,		LBT,	0 },
 {"cvt.ld.d",		"D,S",		0x72200032, 0xffff003f, WR_1|RD_2|FP_D,		0,		0,		LBT,	0 },
 {"cvt.ud.d",		"D,S",		0x72200033, 0xffff003f, WR_1|RD_2|FP_D,		0,		0,		LBT,	0 },
-{"x86mtflag",		"s,???",	0x70000034, 0xfc1fc03f, RD_1,			0,		0,		LBT,	0 },
-{"x86mfflag",		"t,???",	0x70004034, 0xffe0c03f, WR_1,			0,		0,		LBT,	0 },
-{"mttop",		"imm3",		0x700000b6, 0xfffff8ff, 0,			0,		0,		LBT,	0 },
+{"x86mtflag",		"s,+[",		0x70000034, 0xfc1fc03f, RD_1,			0,		0,		LBT,	0 },
+{"x86mfflag",		"t,+[",		0x70004034, 0xffe0c03f, WR_1,			0,		0,		LBT,	0 },
+{"mttop",		"+]",		0x700000b6, 0xfffff8ff, 0,			0,		0,		LBT,	0 },
 {"mftop",		"d",		0x700000f6, 0xffff07ff, WR_1,			0,		0,		LBT,	0 },
 
 /* No hazard protection on coprocessor instructions--they shouldn't

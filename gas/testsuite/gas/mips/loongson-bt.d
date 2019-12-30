@@ -32,4 +32,9 @@ Disassembly of section .text:
 0+0020:	702320b2 	cvt\.d\.ld	\$f2,\$f4,\$f3
 0+0024:	72201132 	cvt\.ld\.d	\$f4,\$f2
 0+0028:	722010f3 	cvt\.ud\.d	\$f3,\$f2
+0+002c:	700010f6 	mftop	\$2
+0+0030:	700006b6 	mttop	6
+0+0034:	70027ff4 	x86mfflag	\$2,0xff
+0+0038:	70403ff4 	x86mtflag	\$2,0xff
+
 	\.\.\.
