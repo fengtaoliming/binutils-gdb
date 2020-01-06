@@ -26,6 +26,21 @@
 	x86mfflag	$2, 0xff
 	x86mtflag	$2, 0xff
 
+	x86adc.b	$2, $3
+	x86adc.h	$2, $3
+	x86adc.w	$2, $3
+	x86adc.d	$2, $3
+
+	x86add.b	$2, $3
+	x86add.h	$2, $3
+	x86add.w	$2, $3
+	x86add.d	$2, $3
+
+	x86addu.b	$2, $3
+	x86addu.h	$2, $3
+	x86addu.w	$2, $3
+	x86addu.d	$2, $3
+
 #	dctz	$2,$4
 
 # Force at least 8 (non-delay-slot) zero bytes, to make 'objdump' print ...
