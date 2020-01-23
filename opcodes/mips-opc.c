@@ -143,6 +143,7 @@ decode_mips_operand (const char *p)
 	case '[': BIT (8, 6, 0);		/* (0 .. 255) */
 	case ']': UINT (3, 8);			/* (0 .. 7) */
 	case '{': BRANCH (8, 6, 2);
+	case '}': UINT (3, 16);			/* (0 .. 7) */
 	}
       break;
 
@@ -3420,7 +3421,7 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"x86mfflag",		"t,+[",		0x70004034, 0xffe0c03f, WR_1,			0,		0,		LBT,	0 },
 {"mttop",		"+]",		0x700000b6, 0xfffff8ff, 0,			0,		0,		LBT,	0 },
 {"mftop",		"d",		0x700000f6, 0xffff07ff, WR_1,			0,		0,		LBT,	0 },
-{"x86settag",		"",		0x70000037, 0xff18063f, 0,			0,		0,		LBT,	0 },
+{"x86settag",		"+O,d,O,+}",	0x70000037, 0xff18063f, RD_1,			0,		0,		LBT,	0 }, /* TODO: RD_1 or WR_1? */
 {"x86loopz",		"t,+{",		0x70000029, 0xffe0c03f, NODS,			0,		0,		LBT,	0 },
 {"x86loopnz",		"t,+{",		0x70004029, 0xffe0c03f, NODS,			0,		0,		LBT,	0 },
 {"gsrcr.b",		"d,w,<",	0x71600023, 0xffe0003f, RD_1|RD_2,		0,		0,		LBT,	0 },
