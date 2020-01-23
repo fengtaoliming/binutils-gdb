@@ -3,9 +3,13 @@
 
 	# EFLAGS maintenance insn prefix
 	setx86flag.b
+	xori	$2, 0x12
 	setx86flag.h
+	xori	$2, 0x1234
 	setx86flag.w
+	xori	$2, 0x1234
 	setx86flag.d
+	xori	$2, 0x1234
 
 	# x87 emulation helper insns
 	settm
@@ -36,8 +40,6 @@
 	x86add.w	$2, $3
 	x86add.d	$2, $3
 
-	x86addu.b	$2, $3
-	x86addu.h	$2, $3
 	x86addu.w	$2, $3
 	x86addu.d	$2, $3
 
