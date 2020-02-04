@@ -438,6 +438,7 @@ static int mips_32bitmode = 0;
     || (CPU) == CPU_R5900)		\
    && ((CPU) != CPU_GS464		\
     || (CPU) != CPU_GS464E		\
+    || (CPU) != CPU_GS464V		\
     || (CPU) != CPU_GS264E))
 
 /* Return true if ISA supports move to/from high part of a 64-bit
@@ -20123,6 +20124,8 @@ static const struct mips_cpu_info mips_cpu_info_table[] =
      ISA_MIPS64R2,	CPU_GS464 },
   { "gs464e",         0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
      | ASE_LOONGSON_EXT2,	ISA_MIPS64R2,	CPU_GS464E },
+  { "gs464v",         0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
+     | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64,	ISA_MIPS64R2,	CPU_GS464V },
   { "gs264e",         0, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
      | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64,	ISA_MIPS64R2,	CPU_GS264E },
 

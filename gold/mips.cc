@@ -3985,6 +3985,7 @@ class Target_mips : public Sized_target<size, big_endian>
     mach_mips_gs464           = 3003,
     mach_mips_gs464e          = 3004,
     mach_mips_gs264e          = 3005,
+    mach_mips_gs464v          = 3006,
     mach_mips_sb1             = 12310201, // octal 'SB', 01
     mach_mips_octeon          = 6501,
     mach_mips_octeonp         = 6601,
@@ -4150,6 +4151,7 @@ class Target_mips : public Sized_target<size, big_endian>
     this->add_extension(mach_mips_octeon2, mach_mips_octeonp);
     this->add_extension(mach_mips_octeonp, mach_mips_octeon);
     this->add_extension(mach_mips_octeon, mach_mipsisa64r2);
+    this->add_extension(mach_mips_gs464v, mach_mips_gs264e);
     this->add_extension(mach_mips_gs264e, mach_mips_gs464e);
     this->add_extension(mach_mips_gs464e, mach_mips_gs464);
     this->add_extension(mach_mips_gs464, mach_mipsisa64r2);
@@ -8868,6 +8870,9 @@ Target_mips<size, big_endian>::elf_mips_mach(elfcpp::Elf_Word flags)
     case elfcpp::E_MIPS_MACH_GS464E:
       return mach_mips_gs464e;
 
+    case elfcpp::E_MIPS_MACH_GS464V:
+      return mach_mips_gs464v;
+
     case elfcpp::E_MIPS_MACH_GS264E:
       return mach_mips_gs264e;
 
@@ -12538,6 +12543,8 @@ Target_mips<size, big_endian>::elf_mips_mach_name(elfcpp::Elf_Word e_flags)
       return "mips:gs464";
     case elfcpp::E_MIPS_MACH_GS464E:
       return "mips:gs464e";
+    case elfcpp::E_MIPS_MACH_GS464V:
+      return "mips:gs464v";
     case elfcpp::E_MIPS_MACH_GS264E:
       return "mips:gs264e";
     case elfcpp::E_MIPS_MACH_OCTEON:
