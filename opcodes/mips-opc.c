@@ -425,6 +425,9 @@ decode_mips_operand (const char *p)
 /* Loongson EXTensions R2 (EXT2) instructions support.  */
 #define LEXT2	ASE_LOONGSON_EXT2
 
+/* Loongson Atomic Memory Operation (AMO) support. */
+#define LAMO	ASE_LOONGSON_AMO
+
 /* The order of overloaded instructions matters.  Label arguments and
    register arguments look the same. Instructions that can have either
    for arguments must apear in the correct order in this table for the
@@ -527,6 +530,44 @@ const struct mips_opcode mips_builtin_opcodes[] =
 {"ctz",			"d,s",		0x70000022, 0xfc1f07ff,	WR_1|RD_2,		0,		0,		LEXT2,	0 },
 {"dcto",		"d,s",		0x700000e2, 0xfc1f07ff,	WR_1|RD_2,		0,		0,		LEXT2,	0 },
 {"dctz",		"d,s",		0x700000a2, 0xfc1f07ff,	WR_1|RD_2,		0,		0,		LEXT2,	0 },
+
+/* Loongson Atomic Memory Operation (AMO) ASE. */
+{"amswap_sync.w",	"d,t,-0(s)",	0x70000039, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amswap_sync.d",	"d,t,-0(s)",	0x70000079, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amadd_sync.w",	"d,t,-0(s)",	0x700000b9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amadd_sync.d",	"d,t,-0(s)",	0x700000f9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amand_sync.w",	"d,t,-0(s)",	0x70000139, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amand_sync.d",	"d,t,-0(s)",	0x70000179, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amor_sync.w",		"d,t,-0(s)",	0x700001b9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amor_sync.d",		"d,t,-0(s)",	0x700001f9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amxor_sync.w",	"d,t,-0(s)",	0x70000239, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amxor_sync.d",	"d,t,-0(s)",	0x70000279, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammax_sync.w",	"d,t,-0(s)",	0x700002b9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammax_sync.d",	"d,t,-0(s)",	0x700002f9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammin_sync.w",	"d,t,-0(s)",	0x70000339, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammin_sync.d",	"d,t,-0(s)",	0x70000379, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammaxu_sync.w",	"d,t,-0(s)",	0x700003b9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammaxu_sync.d",	"d,t,-0(s)",	0x700003f9, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amminu_sync.w",	"d,t,-0(s)",	0x70000439, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amminu_sync.d",	"d,t,-0(s)",	0x70000479, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amswap.w",		"d,t,-0(s)",	0x70000038, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amswap.d",		"d,t,-0(s)",	0x70000078, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amadd.w",		"d,t,-0(s)",	0x700000b8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amadd.d",		"d,t,-0(s)",	0x700000f8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amand.w",		"d,t,-0(s)",	0x70000138, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amand.d",		"d,t,-0(s)",	0x70000178, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amor.w",		"d,t,-0(s)",	0x700001b8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amor.d",		"d,t,-0(s)",	0x700001f8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amxor.w",		"d,t,-0(s)",	0x70000238, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amxor.d",		"d,t,-0(s)",	0x70000278, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammax.w",		"d,t,-0(s)",	0x700002b8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammax.d",		"d,t,-0(s)",	0x700002f8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammin.w",		"d,t,-0(s)",	0x70000338, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammin.d",		"d,t,-0(s)",	0x70000378, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammaxu.w",		"d,t,-0(s)",	0x700003b8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"ammaxu.d",		"d,t,-0(s)",	0x700003f8, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amminu.w",		"d,t,-0(s)",	0x70000438, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
+{"amminu.d",		"d,t,-0(s)",	0x70000478, 0xfc0007ff,	MOD_1|RD_2|SM,		0,		0,		LAMO,	0 },
 
 /* R5900 VU0 Macromode instructions. */
 {"vabs",		"+7+K,+6+K",	  0x4a0001fd, 0xfe0007ff,	CP,		VU0CH,		VU0,		0,	0 },

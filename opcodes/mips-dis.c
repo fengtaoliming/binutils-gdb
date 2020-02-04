@@ -647,8 +647,9 @@ const struct mips_arch_choice mips_arch_choices[] =
 
   { "gs464v",   1, bfd_mach_mips_gs464v, CPU_GS464V,
     ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
-    | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64, mips_cp0_names_numeric, NULL,
-    0, mips_cp1_names_mips3264, mips_hwr_names_numeric },
+    | ASE_LOONGSON_EXT2 | ASE_MSA | ASE_MSA64 | ASE_LOONGSON_AMO,
+    mips_cp0_names_numeric, NULL, 0, mips_cp1_names_mips3264,
+    mips_hwr_names_numeric },
 
   { "gs264e",   1, bfd_mach_mips_gs464e, CPU_GS264E,
     ISA_MIPS64R2, ASE_LOONGSON_MMI | ASE_LOONGSON_CAM | ASE_LOONGSON_EXT
@@ -983,6 +984,12 @@ parse_mips_ase_option (const char *option)
   if (CONST_STRNEQ (option, "loongson-ext"))
     {
       mips_ase |= ASE_LOONGSON_EXT;
+      return TRUE;
+    }
+
+  if (CONST_STRNEQ (option, "loongson-amo"))
+    {
+      mips_ase |= ASE_LOONGSON_AMO;
       return TRUE;
     }
 
