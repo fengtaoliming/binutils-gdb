@@ -43,6 +43,7 @@ decode_mips_operand (const char *p)
     case '-':
       switch (p[1])
 	{
+	case '0': INT_ADJ (0, 0, 0, 0, FALSE);
 	case 'a': INT_ADJ (19, 0, 262143, 2, FALSE);
 	case 'b': INT_ADJ (18, 0, 131071, 3, FALSE);
 	case 'd': SPECIAL (0, 0, REPEAT_DEST_REG);
